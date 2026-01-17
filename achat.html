@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander | BDE SFA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="buy-page">
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="back-link">← Retour à l'accueil</a>
+            <div class="nav-logo">SFA <span>ACHAT</span></div>
+        </div>
+    </nav>
+
+    <main class="form-wrapper">
+        <div class="form-container-card">
+            <div class="form-header">
+                <h1>Finaliser ma commande</h1>
+                <p>Les profits financent les événements du lycée.</p>
+            </div>
+
+            <iframe
+              id="JotFormIFrame-253436865926066"
+              title="Formulaire de commande SFA"
+              src="https://form.jotform.com/253436865926066"
+              style="width: 100%; border:none; min-height: 1000px;"
+              scrolling="no">
+            </iframe>
+        </div>
+    </main>
+
+    <script type="text/javascript">
+      // Ce script permet au formulaire de dire au site "j'ai besoin de plus de hauteur"
+      window.addEventListener("message", function(e) {
+        if (typeof e.data === 'string' && e.data.includes(":")) {
+          var args = e.data.split(":");
+          if (args[0] === "setHeight") {
+            document.getElementById("JotFormIFrame-253436865926066").style.height = args[1] + "px";
+          }
+        }
+      }, false);
+    </script>
+
+</body>
+</html>
