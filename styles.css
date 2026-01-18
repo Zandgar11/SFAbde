@@ -1,105 +1,377 @@
+/* IMPORTATION POLICE */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
 :root {
     --main-blue: #1D2D4B;    /* Bleu du logo */
-    --accent-blue: #00AEEF;  /* Bleu Azur du logo */
-    --gold: #F9A61A;         /* Jaune du logo */
-    --dark-bg: #0a0f1a;
-    --card-bg: #161e2d;
+    --accent-blue: #00AEEF;  /* Bleu Azur */
+    --gold: #F9A61A;         /* Jaune/Or */
+    --dark-bg: #070b14;      /* Encore plus profond */
+    --card-bg: #121a29;      /* Bleu nuit */
     --white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--dark-bg);
     color: var(--white);
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* NAVBAR - EFFET DE VERRE FLOU */
 .navbar {
-    background: rgba(10, 15, 26, 0.95);
-    padding: 15px 5%;
+    background: rgba(10, 15, 26, 0.8);
+    padding: 20px 5%;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-.nav-logo { font-weight: 900; font-size: 1.2rem; }
+.nav-content { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+}
+
+.nav-logo { 
+    font-weight: 900; 
+    font-size: 1.4rem; 
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
 .nav-logo span { color: var(--accent-blue); }
 
-.nav-links { display: flex; align-items: center; gap: 20px; }
-.insta-link { color: var(--white); font-size: 1.5rem; transition: 0.3s; }
-.insta-link:hover { color: var(--accent-blue); }
+.nav-links { display: flex; align-items: center; gap: 25px; }
 
-.nav-btn {
-    background: var(--accent-blue);
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
+.insta-link { 
+    color: var(--white); 
+    font-size: 1.6rem; 
+    transition: var(--transition); 
+    opacity: 0.8;
 }
 
-/* HERO */
+.insta-link:hover { 
+    color: var(--accent-blue); 
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, var(--accent-blue), #0077ef);
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 174, 239, 0.5);
+}
+
+/* HERO SECTION - LOOK CINÉMATIQUE */
 .hero {
-    height: 70vh;
+    height: 90vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), var(--dark-bg));
-    padding-top: 60px;
+    background: radial-gradient(circle at center, rgba(0, 174, 239, 0.15) 0%, transparent 70%),
+                linear-gradient(rgba(7, 11, 20, 0.4), var(--dark-bg)),
+                url('image_c9471e.jpg'); /* Image de fond Canva */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0 20px;
 }
 
-.hero h1 { font-size: 3rem; font-weight: 900; margin: 15px 0; }
-.hero h2 { color: var(--accent-blue); letter-spacing: 4px; font-size: 1rem; }
+.hero h2 { 
+    color: var(--accent-blue); 
+    letter-spacing: 6px; 
+    font-size: 0.9rem; 
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease;
+}
+
+.hero h1 { 
+    font-size: clamp(2.5rem, 8vw, 5rem); 
+    font-weight: 900; 
+    line-height: 0.95;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease;
+}
+
 .cta-main {
     display: inline-block;
     background: var(--gold);
     color: var(--main-blue);
-    padding: 15px 40px;
+    padding: 18px 45px;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 100px;
     font-weight: 900;
-    margin-top: 20px;
-    transition: 0.3s;
+    font-size: 1rem;
+    box-shadow: 0 10px 30px rgba(249, 166, 26, 0.3);
+    transition: var(--transition);
+    animation: fadeInUp 1.2s ease;
 }
 
-/* PRODUITS */
-.products { padding: 60px 5%; }
+.cta-main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(249, 166, 26, 0.5);
+    background-color: #ffb83d;
+}
+
+/* SECTION TITRE */
+.section-title {
+    text-align: center;
+    padding: 80px 0 40px;
+}
+
+.section-title h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+/* GRILLE PRODUITS - CARTES PREMIUM */
+.products { padding: 40px 5% 100px; }
+
 .product-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 30px; 
-    max-width: 1100px; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 40px; 
+    max-width: 1200px; 
     margin: 0 auto; 
 }
 
 .item { 
     background: var(--card-bg); 
-    border-radius: 20px; 
+    border-radius: 30px; 
     overflow: hidden; 
-    border: 1px solid rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+.item:hover { 
+    transform: translateY(-15px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.item:hover::before { transform: translateX(100%); }
+
+.item img { 
+    width: 100%; 
+    height: 480px; 
+    object-fit: cover; 
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.item:hover img { transform: scale(1.08); }
+
+.item-desc { 
+    padding: 30px; 
+    background: linear-gradient(to top, var(--card-bg), transparent);
+    position: relative;
+}
+
+.item-desc h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.item-desc p {
+    font-weight: 600; 
+    font-size: 0.85rem; 
+    color: #a0aec0; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* FOOTER - ÉPURÉ */
+footer { 
+    text-align: center; 
+    padding: 80px 20px; 
+    border-top: 1px solid rgba(255,255,255,0.05); 
+    background: #040810;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #5d6d85;
+    margin-bottom: 15px;
+}
+
+footer a { 
+    color: var(--accent-blue); 
+    text-decoration: none; 
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+footer a:hover { letter-spacing: 2px; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero { height: 70vh; }
+    .hero h1 { font-size: 2.8rem; }
+    .item img { height: 400px; }
+}
+
+/* SPECIFIQUE GUIDE DES TAILLES */
+.guide-page {
+    background: radial-gradient(circle at top right, rgba(0, 174, 239, 0.05), var(--dark-bg));
+}
+
+.guide-hero {
+    padding: 140px 20px 60px;
     text-align: center;
 }
 
-.item img { width: 100%; height: 400px; object-fit: cover; }
-.item-desc { padding: 20px; font-weight: 600; font-size: 0.9rem; color: #a0aec0; }
-
-/* FOOTER */
-footer { 
-    text-align: center; 
-    padding: 60px 20px; 
-    border-top: 1px solid rgba(255,255,255,0.1); 
+.guide-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 10px;
 }
 
-footer a { color: var(--accent-blue); text-decoration: none; font-size: 0.9rem; margin-top: 10px; display: block; }
+.guide-hero p {
+    color: var(--accent-blue);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
+.back-home {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.back-home:hover { color: var(--accent-blue); }
+
+.guide-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 100px;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.size-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: var(--transition);
+}
+
+.size-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+}
+
+.card-img {
+    position: relative;
+    height: 320px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gold);
+    color: var(--main-blue);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-details h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.card-details p {
+    color: #5d6d85;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.guide-footer-btns {
+    margin-top: 80px;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .size-grid { grid-template-columns: 1fr 1fr; } /* Deux par ligne sur mobile */
+    .card-img { height: 250px; }
 }
